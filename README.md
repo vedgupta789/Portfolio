@@ -43,5 +43,5 @@ https://owlcarousel2.github.io/OwlCarousel2/
 FlexSlider
 http://flexslider.woothemes.com
 
-Demo Images
-https://unsplash.com
+Images
+https://unsplash.com and https://pixabay.com/
