@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="icon" href="img/vglogo.png" sizes="192x192">
     <link rel="apple-touch-icon" href="img/vglogo.png">
-    <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#000">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <link rel="stylesheet" href="css/styles-merged.css">
     <link rel="stylesheet" href="css/style.min.css">
@@ -25,7 +24,7 @@
 
   <header role="banner" class="probootstrap-header">
     <div class="container">
-      <a href="index.html" class="probootstrap-logo"><img style="margin-top: -10px;" src="img/vglogo.png" alt="Ved Gupta" width="50px"></a>
+      <a href="index.html" class="probootstrap-logo"><img style="margin-top: -10px;" src="img/vglogo.png" alt="Ved Gupta" width="70px"></a>
         
       <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
       <div class="mobile-menu-overlay"></div>
@@ -59,7 +58,7 @@
   <!-- END: header -->
   <section class="probootstrap-slider flexslider">
     <ul class="slides">
-      <li style="background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.8)) , url(https://cdn.pixabay.com/photo/2018/08/09/10/46/phone-3594206_960_720.jpg);">
+      <li style="background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 1)) , url(https://cdn.pixabay.com/photo/2018/08/09/10/46/phone-3594206_960_720.jpg);">
         <div class="container">
           <div class="row">
             <div class="col-md-12 text-center">
@@ -74,11 +73,11 @@
     </ul>
   </section>
   <!-- END: slider  -->
-  
   <section class="probootstrap-section">
     <div class="container">
       <div class="row">
         <div class="col-md-8">
+          <div id="alert"></div>
           <form id="contact_form" action="javascript:sendmail()" method="post" class="probootstrap-form mb60">
             <div class="row">
               <div class="col-md-6">
@@ -210,7 +209,7 @@
 
      // var body = $('#body').val();
 
-     var Body='Name: '+fname+' '+lname+'<br>Email: '+email+'<br><br>Message: '+message;
+     var Body='<b>Name: </b>'+fname+' '+lname+'<br><b>Email: </b>'+email+'<br><br><b>Message: </b>'+message;
      //console.log(name, phone, email, message);
 
      Email.send({
@@ -223,13 +222,15 @@
        message =>{
          //console.log (message);
          if(message=='OK'){
-          $( '#contact_form' ).each(function(){
-            this.reset();
-          });
-          alert('Your mail has been send. Thank you for connecting.');
+          $( '#contact_form' ).hide();
+
+          $('#alert').html(
+            "<div class='mb20' style='border:1px solid color:#FFFFFF66'>"+
+            "<p style='font-size:22px'><b><img src='https://www.materialui.co/materialIcons/action/check_circle_grey_192x192.png' style='width:24px;'>Email Send.</p></b>"+
+            "<p>"+Body+"</p></div>");
+          $('#alert').fadeIn(slow);
          }
          else{
-           console.error (message);
            alert('There is error at sending message. ')
            
          }
